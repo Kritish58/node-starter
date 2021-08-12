@@ -17,10 +17,6 @@ if (process.env.MODE === 'DEVELOPMENT') {
    });
 }
 
-app.get('/test/test-2', async (req, res) => {
-   res.send(req.method + '  => ' + req.protocol + '://' + req.get('Host') + req.originalUrl);
-});
-
 app.listen(process.env.PORT || 3000, () => {
    if (process.env.MODE === 'DEVELOPMENT')
       console.log(chalk.bold.yellow('server is running on port: ', process.env.PORT || 3000));
