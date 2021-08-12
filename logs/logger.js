@@ -13,10 +13,18 @@ const initLogger = async () => {
 };
 
 //* error logger function
-const errorLogger = ({ message, level }) => {
-   fs.appendFile(logFilePath, JSON.stringify({ message, level }), (err) => {
-      if (err) console.log(err);
-   });
+const errorLogger = ({ req, message, level }) => {
+   fs.appendFile(
+      logFilePath,
+      JSON.stringify({
+         url: req.method + '  => ' + req.protocol + '://' + req.get('Host') + req.originalUrl,
+         message,
+         level,
+      }),
+      (err) => {
+         if (err) console.log(err);
+      }
+   );
 };
 
 module.exports = {

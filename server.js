@@ -9,6 +9,18 @@ const app = express();
 dotenv.config();
 initLogger();
 
+//* url console logger middleware
+if (process.env.MODE === 'DEVELOPMENT') {
+   app.use((req, res, next) => {
+      console.log(req.method + '  => ' + req.protocol + '://' + req.get('Host') + req.originalUrl);
+      next();
+   });
+}
+
+app.get('/test/test-2', async (req, res) => {
+   res.send(req.method + '  => ' + req.protocol + '://' + req.get('Host') + req.originalUrl);
+});
+
 app.listen(process.env.PORT || 3000, () => {
    if (process.env.MODE === 'DEVELOPMENT')
       console.log(chalk.bold.yellow('server is running on port: ', process.env.PORT || 3000));
