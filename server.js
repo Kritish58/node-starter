@@ -10,5 +10,6 @@ dotenv.config();
 initLogger();
 
 app.listen(process.env.PORT || 3000, () => {
-   console.log(chalk.bold.yellow('server is running on port: ', process.env.PORT || 3000));
+   if (process.env.MODE === 'DEVELOPMENT')
+      console.log(chalk.bold.yellow('server is running on port: ', process.env.PORT || 3000));
 });
