@@ -17,6 +17,10 @@ if (process.env.MODE === 'DEVELOPMENT') {
    });
 }
 
+app.get('/', (req, res) => {
+   res.send('HELLO WORLD');
+});
+
 app.listen(process.env.PORT || 3000, () => {
    if (process.env.MODE === 'DEVELOPMENT')
       console.log(chalk.bold.yellow('server is running on port: ', process.env.PORT || 3000));
