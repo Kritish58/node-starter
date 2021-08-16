@@ -1,0 +1,2 @@
+# node-starter
+THIS IS A MINIMAL NODE STARTER PACK
